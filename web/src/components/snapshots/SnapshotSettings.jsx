@@ -109,7 +109,7 @@ class SnapshotSettings extends Component {
 
   componentDidUpdate(_, lastState) {
     if (this.state.snapshotSettings !== lastState.snapshotSettings && this.state.snapshotSettings) {
-      if (!this.state.snapshotSettings?.veleroVersion) {
+      if (this.state.snapshotSettings?.isVeleroRunning && !this.state.snapshotSettings?.veleroVersion && !this.state.updatingSettings) {
         this.props.history.replace("/snapshots/settings?configure=true");
         this.setState({ showConfigureSnapshotsModal: true });
       }
